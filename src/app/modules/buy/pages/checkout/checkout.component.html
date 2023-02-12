@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <form [formGroup]="client">
+            <h4>Ingrese sus datos</h4>
+            Nombre:
+            <input
+              type="text"
+              class="form-control"
+              formControlName="clientName"
+              [class.is-invalid]="
+                client.get('clientName')!.touched && client.get('clientName')!.invalid
+              "
+            />
+            Id:
+            <input type="text" class="form-control" formControlName="idClient" pattern="[0-9]+"/>
+            TipoId:
+            <input type="text" class="form-control" formControlName="idType"/>
+            <button (click)="sendBuy()" class="btn btn-dark purple btn-block">Comprar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card">
+        <table class="table">
+          <thead class="thead-light">
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Producto</th>
+              <th scope="col">Unidades</th>
+            </tr>
+          </thead>
+          <tbody *ngFor="let productInCart of cart">
+            <tr>
+              <td style="width: 100px">
+                <img
+                  [src]="productInCart.imageUrl"
+                  class="img-fluid"
+                  alt="..."
+                />
+              </td>
+              <td>{{ productInCart.name }}</td>
+              <td>{{ productInCart.quantity }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
