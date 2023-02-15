@@ -5,31 +5,64 @@
         <div class="card-body">
           <form [formGroup]="client">
             <h4>Ingrese sus datos</h4>
-            Nombre:
-            <input
-              type="text"
-              class="form-control"
-              formControlName="clientName"
-              [class.is-invalid]="
-                client.get('clientName')!.touched && client.get('clientName')!.invalid
-              "
-            />
-            Id:
-            <input type="text" class="form-control" formControlName="idClient" pattern="[0-9]+"/>
-            TipoId:
-            <input type="text" class="form-control" formControlName="idType"/>
-            <button (click)="sendBuy()" class="btn btn-dark purple btn-block">Comprar</button>
+            <div class="mt-4 mb-2">
+              Nombre :
+              <input
+                type="text"
+                class="form-control mt-1"
+                formControlName="clientName"
+                [class.is-invalid]="
+                  client.get('clientName')!.touched &&
+                  client.get('clientName')!.invalid
+                "
+              />
+            </div>
+            <div class="row mb-4">
+              <div class="col-8">
+                Numero de Documento :
+                <input
+                  type="text"
+                  class="form-control mt-1"
+                  formControlName="idClient"
+                  pattern="[0-9]+"
+                  [class.is-invalid]="
+                    client.get('idClient')!.touched &&
+                    client.get('idClient')!.invalid
+                  "
+                />
+              </div>
+              <div class="col-4">
+                Tipo :
+                <select
+                  name=""
+                  id=""
+                  class="form-control mt-1"
+                  formControlName="idType"
+                >
+                  <option value="CC">CC</option>
+                  <option value="TI">TI</option>
+                  <option value="NIT">NIT</option>
+                </select>
+                <!-- <input type="text" class="form-control mt-1" formControlName="idType" /> -->
+              </div>
+            </div>
+            <button
+              (click)="sendBuy()"
+              [disabled]="!client.valid"
+              class="btn btn-dark purple btn-block"
+            >
+              Comprar
+            </button>
           </form>
         </div>
       </div>
     </div>
     <div class="col">
-      <div class="card">
+      <div class="card text-center">
         <table class="table">
           <thead class="thead-light">
             <tr>
-              <th scope="col"></th>
-              <th scope="col">Producto</th>
+              <th colspan="2" scope="col">Producto</th>
               <th scope="col">Unidades</th>
             </tr>
           </thead>

@@ -1,56 +1,66 @@
 <nav class="navbar navbar-expand-lg navbar-dark mb-4 purple">
-  <a class="navbar-brand" href="#">
-    <img
-    src="https://laika.com.co/assets/home/LaikaMascotas.svg"
-    width="40"
-    height="40"
-    />
-    Mascotas
-  </a>
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  <div class="container">
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Products<span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Products<span class="sr-only">(current)</span></a
-        >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          Compras
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Comprar</a>
-          <a class="dropdown-item" href="#">Historial de compras</a>
-        </div>
-      </li>
-    </ul>
+    <a class="navbar-brand" href="#">
+      <img
+        src="https://laika.com.co/assets/home/LaikaMascotas.svg"
+        width="40"
+        height="40"
+        class="mr-1"
+      />
+      <b> Mascotas </b>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Productos
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/product/create">Crear Producto</a>
+            <a class="dropdown-item" routerLink="/product/list">Listar Productos</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Compras
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" routerLink="/buy">Comprar</a>
+            <a class="dropdown-item" routerLink="/buy/list"
+              >Historial de compras</a
+            >
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>

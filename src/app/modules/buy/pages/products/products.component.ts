@@ -11,6 +11,8 @@ import { ProductService } from 'src/app/shared/services/product.service';
 export class ProductsComponent implements OnInit {
   products: Product[] | undefined;
   cart: Product[] = [];
+  pages: Array<number> | undefined;
+  page: number = 0;
 
   constructor(private service: ProductService, private router: Router) {}
 
@@ -22,10 +24,18 @@ export class ProductsComponent implements OnInit {
   }
 
   getProducts(): void {
-    this.service.getPage(0).subscribe((data) => {
+    this.service.getPage(this.page).subscribe((data) => {
       this.products = data;
       data.map((e) => (e.quantity = 0));
     });
+    this.service
+      .getTotalPages()
+      .subscribe((data) => (this.pages = new Array(data)));
+  }
+
+  getPage(page: number): void {
+    this.page = page;
+    this.getProducts();
   }
 
   loadCart(): void {
@@ -39,8 +49,13 @@ export class ProductsComponent implements OnInit {
     }
     ++this.cart[
       this.cart.findIndex((productCart) => productCart.name === product.name)
-    ].quantity;
+    ].quantity!;
     localStorage.setItem('cart', JSON.stringify(this.cart));
     console.log(JSON.parse(localStorage.getItem('cart')!));
+  }
+
+  deleteCart() {
+    this.cart = [];
+    localStorage.removeItem('cart');
   }
 }

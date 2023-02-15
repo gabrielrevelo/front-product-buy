@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Buy } from 'src/app/interfaces/buy';
 
 @Injectable({
   providedIn: 'root'
@@ -17,4 +18,10 @@ export class BuyService {
       responseType: 'text' as 'json',
     });
   }
+
+  getBuys(): Observable<Buy[]> {
+    let direction = this.url + 'list';
+    return this.http.get<Buy[]>(direction);
+  }
+
 }

@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="card text-center">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Fecha</th>
+          <th scope="col">Cliente</th>
+          <th scope="col">Tipo de Identificacion</th>
+          <th scope="col">Numero de Identificacion</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let buy of buys">
+        <tr>
+          <td>{{ buy.date }}</td>
+          <td>{{ buy.clientName }}</td>
+          <td>{{ buy.idType }}</td>
+          <td>{{ buy.idClient }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+

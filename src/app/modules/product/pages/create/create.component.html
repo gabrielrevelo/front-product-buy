@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="card w-50 mx-auto">
+    <div class="card-body">
+      <form [formGroup]="productToCreate">
+        <h4 class="text-center">Crear Producto</h4>
+        Nombre:
+        <input
+          type="text"
+          class="form-control mt-1 mb-2"
+          formControlName="name"
+        />
+        Imagen (Url):
+        <input
+          type="text"
+          class="form-control mt-1 mb-2"
+          formControlName="imageUrl"
+        />
+        <div class="row">
+          <div class="col">
+            Inventario:
+            <input
+              type="number"
+              class="form-control mt-1 mb-2"
+              formControlName="inventory"
+            />
+          </div>
+          <div class="col">
+            Min (Inventario):
+            <input
+              type="number"
+              class="form-control mt-1 mb-2"
+              formControlName="min"
+            />
+          </div>
+          <div class="col">
+            Max (Compra):
+            <input
+              type="number"
+              class="form-control mt-1 mb-4"
+              formControlName="max"
+            />
+          </div>
+        </div>
+        <button
+          (click)="createProduct()"
+          [disabled]="!productToCreate.valid"
+          class="btn btn-dark purple btn-block"
+        >
+          Crear Producto
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

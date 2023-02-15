@@ -3,10 +3,13 @@
     <div class="col-9">
       <div class="row">
         <div class="col" *ngFor="let product of products">
-          <div class="card mb-4" style="width: 240px">
+          <div class="card mb-2" style="width: 240px">
             <img [src]="product.imageUrl" class="card-img-top" alt="..." />
             <div class="card-body">
-              <h4 class="card-title text-center">{{ product.name }}</h4>
+              <h5 class="card-title text-center">{{ product.name }}</h5>
+              <p class="text-secondary text-center">
+                Existencias: {{ product.inventory }}
+              </p>
               <button
                 (click)="addToCart(product)"
                 class="btn btn-dark purple btn-block"
@@ -17,22 +20,29 @@
           </div>
         </div>
       </div>
-      <nav class="">
+      <nav class="mt-2">
         <ul class="pagination justify-content-center">
-          <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
-          <li class="page-item"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+          <!-- <li class="page-item">
+            <a class="page-link" href="#">Anterior</a>
+          </li> -->
+          <li class="page-item" *ngFor="let page of pages; let i = index">
+            <a
+              class="page-link"
+              (click)="getPage(i)"
+              href="javascript:void(0)"
+              >{{ i + 1 }}</a
+            >
+          </li>
+          <!-- <li class="page-item">
+            <a class="page-link" href="#">Siguiente</a>
+          </li> -->
         </ul>
       </nav>
     </div>
     <div class="col-3">
       <div class="card">
         <h4 class="card-header text-center">Carrito</h4>
-        <div class=""
-        *ngFor="let productInCart of cart;last as isLast;"
-        >
+        <div class="" *ngFor="let productInCart of cart; last as isLast">
           <div class="d-flex mt-2">
             <div class="col-4 d-flex align-items-center">
               <img [src]="productInCart.imageUrl" class="img-fluid" alt="..." />
@@ -47,9 +57,24 @@
               </p>
             </div>
           </div>
-          <hr class="m-0" *ngIf="!isLast">
+          <hr class="m-0" *ngIf="!isLast" />
         </div>
-        <a class="btn btn-dark purple btn-block" routerLink="/buy/checkout">Comprar</a>
+        <div class="d-flex">
+          <div class="w-25">
+            <button (click)="deleteCart()" class="btn btn-danger btn-block">
+              X
+            </button>
+          </div>
+          <div class="w-75">
+            <button
+              class="btn btn-dark purple btn-block"
+              [disabled]="cart.length === 0"
+              routerLink="/buy/checkout"
+            >
+              Comprar
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
