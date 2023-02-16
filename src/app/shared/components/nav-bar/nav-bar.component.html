@@ -66,5 +66,5 @@
     </div>
   </div>
   <button class="btn btn-primary" routerLink="login" *ngIf="!isLoged()">Login</button>
-  <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()">Logout</button>
+  <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()" routerLink="login">Logout</button>
 </nav>

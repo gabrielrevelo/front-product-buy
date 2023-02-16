@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+            <B>REGISTRO</B>
+
+        </div>
+
+        <div class="card-body" style="margin: 20px">
+            <form [formGroup]="form">
+                <span class="p-float-label" style="margin: 20px;">
+                    <input id="float-input" type="text" formControlName="email">
+                    <label for="float-input">Email</label>
+                </span>
+
+                <span class="p-float-label" style="margin: 20px;">
+                    <input id="float-input" type="text" formControlName="password">
+                    <label for="float-input">Password</label>
+                </span>
+
+                <span class="p-float-label" style="margin: 20px;">
+                    <input id="float-input" type="text" formControlName="role">
+                    <label for="float-input">Role</label>
+                </span>
+
+                <br>
+
+                <button (click)="register()">Registrar</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>

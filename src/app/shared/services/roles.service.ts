@@ -17,11 +17,8 @@ export class RolesService {
     return this.http$.get("https://angular-509fd-default-rtdb.firebaseio.com/roles.json?&auth=" + token);
   }
 
-  saveRoles(email: string, role: string){
+  saveRoles(email: string, role: string, token: string){
 
-    const token = this.auth$.getIdToken();
-
-    console.log(token)
 
     let body: Role = {
       email: email,
@@ -34,4 +31,25 @@ export class RolesService {
     )
 
   }
+
+  // saveRoles(email: string, role: string){
+
+  //   const token = this.auth$.getIdToken();
+
+   
+
+  //   let body: Role = {
+  //     email: email,
+  //     role: role
+  //   }
+
+  //   this.http$.post("https://angular-509fd-default-rtdb.firebaseio.com/roles.json?auth=" + token, body).subscribe(
+  //     response => console.log("Se ha guardado rol" + response),
+  //     error => console.log("Error: " + error)
+  //   )
+
+  // }
+
+
+
 }

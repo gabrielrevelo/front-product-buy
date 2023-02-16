@@ -5,12 +5,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { HttpClientModule } from '@angular/common/http';
+import { RegisterComponent } from './register/register.component';
 
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
