@@ -1,58 +1,52 @@
-<div class="container">    
+<div class="container">
     <div class="card text-center">
         <div class="card-header">
-           <B>LOGIN</B> <i  style="font-size: 1rem;margin-left: 10px;"></i>                  
+            <B>LOGIN</B> <i style="font-size: 1rem;margin-left: 10px;"></i>
         </div>
-         
+
         <div class="card-body" style="margin: 20px;">
             <form [formGroup]="form">
-                <span class="p-float-label" style="margin: 20px;">
-                    <input 
-                        id="float-input" 
-                        type="text" 
-                        formControlName="email"
-                        > 
-                    <label for="float-input">Correo</label>
-                </span>                       
 
-                
-                <span class="p-float-label" style="margin: 20px;margin-top: 30px;">
-                    
-                    <input 
-                        id="float-input" 
-                        type="password" 
-                        formControlName="password"
-                         > 
-                    <label for="float-input">Contraseña</label>
-                </span>
-    
-                           
-                <button type="submit" label="Iniciar" class="btn btn-primary" style="margin-bottom: 10px;" (click)="login()">Entrar</button>    
-                <div>
-                    <button type="button"  label="Google"  style="margin-bottom: 10px;">Google</button>
-                </div>                    
-                
+                <div class="mb-3">
+                    <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="email"
+                        placeholder="Correo electrónico">
+                    <div id="emailHelp" class="form-text">Email required</div>
+                </div>
+
+                <div class="mb-3">
+                    <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="password"
+                        placeholder="Contraseña">
+                    <div id="emailHelp" class="form-text">Contraseña requerida</div>
+                </div>
+
+
+
+                <button type="submit" label="Iniciar" class="btn btn-primary" style="margin-bottom: 10px;"
+                    (click)="login()">Entrar</button>
+
+                <!-- <div>
+                    <button type="button" label="Google" style="margin-bottom: 10px;">Google</button>
+                </div> -->
+
                 <br>
-                      
-                 
-                <br>              
-                <p>¿Aún no tienes cuenta? <a href="/register" >Registrate</a></p>   
-                <p> <a  >Recuperar contraseña</a></p> 
-               
-               
-     
-            </form>           
-           
+
+
+                <br>
+                <p>¿Aún no tienes cuenta? <a href="/register">Registrate</a></p>
+                <p> <a>Recuperar contraseña</a></p>
+
+
+
+            </form>
+
         </div>
-        
+
         <div>
-            
-        </div>        
-    </div>    
-    
+
+        </div>
+    </div>
+
 
 </div>
 
 <p>{{roleActualUser}}</p>
-
-<button (click)="enviar()">Probar enviar</button>

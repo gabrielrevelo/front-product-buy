@@ -49,19 +49,5 @@ export class LoginComponent {
 
   }
 
-  enviar() {
-    this.roles$.loadRoles().subscribe(
-      role => {
-
-        let data = Object.values(role)
-        data.forEach(user => console.log(user.role))
-      }
-    )
-
-    console.log(this.roleActualUser)
-
-    //this.roles$.saveRoles("usuario@mail.com", "ADMIN");
-
-  }
 
 }

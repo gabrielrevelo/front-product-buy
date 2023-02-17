@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark mb-4 purple">
-  <h4>{{roleActualUser}}</h4>
+  <h4 style="color: white;">{{roleActualUser == "" ? "No logueado": roleActualUser}}</h4>
   <div class="container">
    
 
@@ -65,6 +65,6 @@
       </ul>
     </div>
   </div>
-  <button class="btn btn-primary" routerLink="login" *ngIf="!isLoged()">Login</button>
-  <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()" routerLink="login">Logout</button>
+  <button class="btn btn-primary btnP" routerLink="login" *ngIf="!isLoged()" style="background-color: #603E85; border-color: white;">Login</button>
+  <button class="btn btn-primary"  *ngIf="isLoged()" (click)="logout()" routerLink="" style="background-color: #603E85; border-color: white;">Logout</button>
 </nav>
