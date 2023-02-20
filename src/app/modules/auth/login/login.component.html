@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="card w-50 mx-auto">
+    <div class="card-header">
+      <h4 class="m-0 text-center">LOGIN</h4>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="mb-3">
+          <input
+            type="email"
+            class="form-control"
+            aria-describedby="emailHelp"
+            formControlName="email"
+            placeholder="Correo electrónico"
+          />
+          <div id="emailHelp" class="form-text">Email required</div>
+        </div>
+
+        <div class="mb-3">
+          <input
+            type="email"
+            class="form-control"
+            aria-describedby="emailHelp"
+            formControlName="password"
+            placeholder="Contraseña"
+          />
+          <div id="emailHelp" class="form-text">Contraseña requerida</div>
+        </div>
+        <button
+          type="submit"
+          label="Iniciar"
+          class="btn btn-dark purple btn-block mb-4"
+          (click)="login()"
+        >
+          Entrar
+        </button>
+
+        <!-- <div>
+                  <button type="button" label="Google" style="margin-bottom: 10px;">Google</button>
+              </div> -->
+        <p>¿Aún no tienes cuenta? <a href="/register">Registrate</a></p>
+        <!-- <p> <a>Recuperar contraseña</a></p> -->
+      </form>
+    </div>
+    <div></div>
+  </div>
+</div>
