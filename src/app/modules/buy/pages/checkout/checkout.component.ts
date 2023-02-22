@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Product } from 'src/app/interfaces/product';
 import { Buy } from 'src/app/interfaces/buy';
 import { BuyService } from 'src/app/shared/services/buy.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-checkout',
@@ -23,6 +24,7 @@ export class CheckoutComponent implements OnInit {
     idType: '',
     clientName: '',
     idClient: '',
+    username: '',
     products: [],
   };
 
@@ -48,13 +50,22 @@ export class CheckoutComponent implements OnInit {
     this.buy.products = this.cart.map((e) => {
       return { idProduct: e.id, quantity: e.quantity };
     });
+    this.buy.username = JSON.parse(localStorage.getItem('user')!).username;
 
     console.log(this.buy);
 
     this.service.buy(this.buy).subscribe({
       next: (v) => {
-        alert('Compra realizada');
-        window.location.replace('http://localhost:4200');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Compra realizada',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        setTimeout(function(){
+          window.location.replace('http://localhost:4200/buy')
+        }, 1500);
       },
       error: (e) => console.log(e),
       complete: () => console.info('complete'),

@@ -3,6 +3,7 @@ export interface Buy {
   date: string;
   idType: string;
 	clientName: string;
+  username: string;
   idClient: string ;
 	products: any[];
 }
