@@ -27,7 +27,10 @@ export class LoginComponent {
       next: (v) => {
         console.log('Login', v);
         localStorage.setItem('user', JSON.stringify(v));
-        //window.location.replace('http://localhost:4200');
+        if(JSON.parse(localStorage.getItem('user')!).roles[0] === "ROLE_ADMIN")
+          window.location.replace('http://localhost:4200/product/list');
+        if(JSON.parse(localStorage.getItem('user')!).roles[0] === "ROLE_USER")
+          window.location.replace('http://localhost:4200/buy');
       },
       error: (e) => console.log(e),
       complete: () => console.info('complete')

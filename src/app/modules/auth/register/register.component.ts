@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -43,16 +44,21 @@ export class RegisterComponent {
       .subscribe(
         {
           next: (data) => {
-
-
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Registro exitoso',
+              showConfirmButton: false,
+              timer: 1500
+            })
+            this.router$.navigate(['/auth/login']);
           },
           error: (e) => {
             console.log(e)
           },
           complete: () => {
-            this.toast$.success("Registro exitoso");
-            this.router$.navigate(['/auth/login']);
-
+            // this.toast$.success("Registro exitoso");
+            // this.router$.navigate(['/auth/login']);
           },
         }
       );
@@ -62,12 +68,12 @@ export class RegisterComponent {
     if (this.form.value.password !== this.form.value.passwordRepeat) {
       this.flagBtn = false;
       console.log(this.flagBtn, "diferent")
-      
+
     }else{
       this.flagBtn = true;
       console.log(this.flagBtn)
     }
-    
+
   }
 
 }

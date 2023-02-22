@@ -7,42 +7,40 @@
         <div class="card-body">
             <form [formGroup]="form">
                 <div class="form-floating mb-3">
+                    <label for="idRole">Email:</label>
                     <input type="text" class="form-control" id="floatingInput" placeholder="Ingrese email"  formControlName="email" >
                     <div *ngIf="form.get('email')?.hasError('required') && form.pristine === false" style="color: red;">El email es requerido</div>
                     <div *ngIf="form.get('email')?.hasError('email') && form.pristine === false" style="color: red;">Ingrese email válido</div>
-                    
+
                 </div>
 
                 <div class="form-floating mb-3">
+                    <label for="idRole">Contraseña:</label>
                     <input type="password" class="form-control" id="floatingInput" placeholder="Ingrese contraseña"  formControlName="password" #password1>
                     <div *ngIf="form.get('password')?.hasError('required') && form.pristine === false" style="color: red;">Contraseña es requerida</div>
-                    
+
                 </div>
 
                 <div class="form-floating mb-3">
+                    <label for="idRole">Repetir contraseña:</label>
                     <input type="password" class="form-control" id="floatingInput" placeholder="Repita contraseña"  formControlName="passwordRepeat" (input)="passwordMatch()">
                     <!-- <div *ngIf="password1.value !== password2.value && form.pristine === false; then thenBlock" ></div>
                     <ng-template style="color: red;" #thenBlock>Las contraseñas no coinciden</ng-template> -->
-                    
+
                 </div>
-            
-            
-              
+
+
+
                 <div class="form-floating mb-3" >
-                    <label for="idRole">Escoger un rol</label>
-                    <select id="idRole" class="form-select" formControlName="role" style="margin-left: 10px;">
-                                         
+                    <label for="idRole">Escoger un Rol:</label>
+                    <select id="idRole" class="form-control m-0" formControlName="role" style="margin-left: 10px;">
                         <option value="1" >Usuario</option>
                         <option value="2">Administrador</option>
                     </select>
                     <div *ngIf="form.get('role')?.hasError('required') && form.pristine === false" style="color: red;">Rol es requerido</div>
-                    <br>
-                  
                 </div>
 
-                <br><br>
-
-                <button class="btn btn-dark purple btn-block mb-4" (click)="register()" [disabled]="form.invalid">Registrar</button>
+                <button class="btn btn-dark purple btn-block" (click)="register()" [disabled]="form.invalid">Registrar</button>
             </form>
         </div>
 

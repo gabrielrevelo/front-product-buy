@@ -13,23 +13,24 @@
             formControlName="email"
             placeholder="Correo electrónico"
           />
-          <div id="emailHelp" class="form-text">Email required</div>
+          <!-- <div id="emailHelp" class="form-text">Email required</div> -->
         </div>
 
         <div class="mb-3">
           <input
-            type="email"
+            type="password"
             class="form-control"
             aria-describedby="emailHelp"
             formControlName="password"
             placeholder="Contraseña"
           />
-          <div id="emailHelp" class="form-text">Contraseña requerida</div>
+          <!-- <div id="emailHelp" class="form-text">Contraseña requerida</div> -->
         </div>
         <button
           type="submit"
           label="Iniciar"
-          class="btn btn-dark purple btn-block mb-4"
+          class="btn btn-dark purple btn-block mb-2"
+          [disabled]="!form.valid"
           (click)="login()"
         >
           Entrar
@@ -38,7 +39,7 @@
         <!-- <div>
                   <button type="button" label="Google" style="margin-bottom: 10px;">Google</button>
               </div> -->
-        <p>¿Aún no tienes cuenta? <a href="/auth/register">Registrate</a></p>
+        <p class="m-0 text-center">¿Aún no tienes cuenta? <a href="/auth/register">Registrate</a></p>
         <!-- <p> <a>Recuperar contraseña</a></p> -->
       </form>
     </div>

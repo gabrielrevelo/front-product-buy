@@ -38,7 +38,7 @@ export class CreateComponent {
     this.service.createProduct(this.product).subscribe({
       next: (v) => {
         alert('Producto creado');
-        window.location.replace('http://localhost:4200');
+        window.location.replace('http://localhost:4200/product/list');
       },
       error: (e) => console.log(e),
       complete: () => console.info('complete'),
