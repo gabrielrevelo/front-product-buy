@@ -37,6 +37,7 @@ export class ProductService {
 
   delete(id: string): Observable<void> {
     let direction = this.url + 'delete/' + id;
+    console.log("Delete" , direction)
     return this.http.delete<void>(direction);
   }
 

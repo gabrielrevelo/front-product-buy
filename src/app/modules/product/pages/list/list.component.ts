@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/shared/services/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list',
@@ -25,7 +26,20 @@ export class ListComponent implements OnInit {
   }
 
   delete(id: string) {
-    this.service.delete(id)
+    this.service.delete(id).subscribe({
+      next: (v) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Producto eliminado',
+          showConfirmButton: false,
+          timer: 1500
+        })
+        this.products = this.products!.filter((item) => item.id !== id)
+      },
+      error: (e) => console.log(e),
+      complete: () => console.info('complete'),
+    });
   }
 
 }
