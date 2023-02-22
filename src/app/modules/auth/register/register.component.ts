@@ -13,14 +13,17 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   form: FormGroup;
   role: string = "";
+  flagBtn: boolean = false;
 
   constructor(private auth$: AuthService, private toast$: ToastrService, private router$: Router) {
     this.form = new FormGroup({
-      email: new FormControl(null, [Validators.required]),
+      email: new FormControl(null, [Validators.required, Validators.email]),
       password: new FormControl(null, [Validators.required]),
+      passwordRepeat: new FormControl(null, [Validators.required]),
       role: new FormControl(null, [Validators.required]),
     });
   }
+
 
   roleMapping() {
     if (this.form.value.role == "1") {
@@ -34,9 +37,9 @@ export class RegisterComponent {
   register() {
     this.roleMapping()
     console.log(this.role)
-   
 
-    this.auth$.register(this.form.value.email,this.form.value.password,this.role )
+
+    this.auth$.register(this.form.value.email, this.form.value.password, this.role)
       .subscribe(
         {
           next: (data) => {
@@ -46,13 +49,25 @@ export class RegisterComponent {
           error: (e) => {
             console.log(e)
           },
-          complete: () => { 
+          complete: () => {
             this.toast$.success("Registro exitoso");
             this.router$.navigate(['/auth/login']);
 
           },
         }
       );
+  }
+
+  passwordMatch() {
+    if (this.form.value.password !== this.form.value.passwordRepeat) {
+      this.flagBtn = false;
+      console.log(this.flagBtn, "diferent")
+      
+    }else{
+      this.flagBtn = true;
+      console.log(this.flagBtn)
+    }
+    
   }
 
 }
