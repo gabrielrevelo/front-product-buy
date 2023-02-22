@@ -23,11 +23,13 @@
 
                 <div class="form-floating mb-3">
                     <label for="idRole">Repetir contraseña:</label>
-                    <input type="password" class="form-control" id="floatingInput" placeholder="Repita contraseña"  formControlName="passwordRepeat" (input)="passwordMatch()">
-                    <!-- <div *ngIf="password1.value !== password2.value && form.pristine === false; then thenBlock" ></div>
-                    <ng-template style="color: red;" #thenBlock>Las contraseñas no coinciden</ng-template> -->
-
+                    <input type="password" class="form-control" id="floatingInput" placeholder="Repita contraseña"  formControlName="passwordRepeat">
+                    <div *ngIf="form.get('passwordRepeat')?.hasError('required') && form.pristine === false" style="color: red;">Confirmar contraseña es requerido</div>
+                    <div *ngIf="form?.hasError('passwordMismatchError') && form.pristine === false" style="color: red;">Las contraseñas no coinciden</div>
                 </div>
+
+
+     
 
 
 

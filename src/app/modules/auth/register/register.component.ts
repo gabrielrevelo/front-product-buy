@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
@@ -22,7 +22,7 @@ export class RegisterComponent {
       password: new FormControl(null, [Validators.required]),
       passwordRepeat: new FormControl(null, [Validators.required]),
       role: new FormControl(null, [Validators.required]),
-    });
+    },[this.passwordMatch("password","passwordRepeat" )]);
   }
 
 
@@ -64,16 +64,21 @@ export class RegisterComponent {
       );
   }
 
-  passwordMatch() {
-    if (this.form.value.password !== this.form.value.passwordRepeat) {
-      this.flagBtn = false;
-      console.log(this.flagBtn, "diferent")
+  passwordMatch(password: string, confirm_password: string) {
 
-    }else{
-      this.flagBtn = true;
-      console.log(this.flagBtn)
-    }
+    return (form: AbstractControl) => {
+      const passwordValue = form.get(password)?.value;
+      const confirmPassValue = form.get(confirm_password)?.value;
+
+      if(passwordValue === confirmPassValue){
+        return null;
+      }
+      return {passwordMismatchError: true}
+
+     }
+
 
   }
+
 
 }
