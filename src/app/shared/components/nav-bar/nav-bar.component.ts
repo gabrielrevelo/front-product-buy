@@ -7,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class NavBarComponent {
 
+  user: any;
+
+  constructor() {
+    this.user = JSON.parse(localStorage.getItem("user")!);
+  }
+
+  logout() {
+    localStorage.removeItem("user")
+    localStorage.removeItem("cart")
+    window.location.replace('http://localhost:4200');
+  }
+
 }

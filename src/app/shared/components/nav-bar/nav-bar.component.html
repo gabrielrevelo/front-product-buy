@@ -22,7 +22,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div *ngIf="user" class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a
@@ -61,6 +61,11 @@
           </div>
         </li>
       </ul>
+    </div>
+    <div *ngIf="user" class="text-white">
+      {{user.username}}
+      ({{user.roles[0] === "ROLE_ADMIN" ? "Administrador" : "Comprador"}})
+      <button *ngIf="user" (click)="logout()" class="btn btn-warning ml-2">Salir</button>
     </div>
   </div>
 </nav>
