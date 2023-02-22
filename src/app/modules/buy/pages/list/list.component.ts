@@ -20,7 +20,7 @@ export class ListComponent implements OnInit {
 
   getBuys() {
     this.service.getBuys().subscribe((data) => {
-      this.buys = data;
+      this.buys = data.filter(e => e.username === JSON.parse(localStorage.getItem('user')!).username);
     })
   }
 
