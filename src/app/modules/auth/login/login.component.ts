@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
   form: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required]),
+    email: new FormControl(null, [Validators.required, Validators.email]),
     password: new FormControl(null, [Validators.required]),
   });
 
