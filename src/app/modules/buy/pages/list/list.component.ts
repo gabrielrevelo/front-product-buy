@@ -20,7 +20,12 @@ export class ListComponent implements OnInit {
 
   getBuys() {
     this.service.getBuys().subscribe((data) => {
-      this.buys = data.filter(e => e.username === JSON.parse(localStorage.getItem('user')!).username);
+      if (JSON.parse(localStorage.getItem('user')!).roles[0] === "ROLE_USER") {
+        this.buys = data.filter(e => e.username === JSON.parse(localStorage.getItem('user')!).username);
+      } else {
+        this.buys = data;
+      }
+
     })
   }
 

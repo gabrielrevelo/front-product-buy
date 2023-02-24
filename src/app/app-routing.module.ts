@@ -11,7 +11,6 @@ const routes: Routes = [
   },
   {
     path: 'buy',
-    canActivate: [IsUserGuard],
     loadChildren: () =>
       import('./modules/buy/buy.module').then((m) => m.BuyModule),
   },
@@ -25,8 +24,7 @@ const routes: Routes = [
     path: 'auth',
     loadChildren: () =>
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
-  },
-
+  }
 ];
 
 @NgModule({
