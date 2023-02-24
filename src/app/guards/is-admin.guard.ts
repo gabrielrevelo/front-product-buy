@@ -16,7 +16,7 @@ export class IsAdminGuard implements CanActivate {
     if(role !== "ROLE_ADMIN") {
       Swal.fire({
         position: 'top-end',
-        icon: 'error',
+        icon: 'warning',
         title: 'Solo un Administrador puede ingresar aqui',
         showConfirmButton: false,
         timer: 1500

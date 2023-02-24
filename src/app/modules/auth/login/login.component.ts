@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,18 @@ export class LoginComponent {
         if(JSON.parse(localStorage.getItem('user')!).roles[0] === "ROLE_USER")
           window.location.replace('http://localhost:4200/buy');
       },
-      error: (e) => console.log(e),
+      error: (e) => {
+        if(e.error === "Contraseña Incorrecta") {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'warning',
+            title: 'Contraseña Incorrecta',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        console.log(e)
+      },
       complete: () => console.info('complete')
     });
   }

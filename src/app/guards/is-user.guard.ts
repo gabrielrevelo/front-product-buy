@@ -13,7 +13,7 @@ export class IsUserGuard implements CanActivate {
       if(role !== "ROLE_USER") {
         Swal.fire({
           position: 'top-end',
-          icon: 'error',
+          icon: 'warning',
           title: 'Solo un Comprador puede ingresar aqui',
           showConfirmButton: false,
           timer: 1500
