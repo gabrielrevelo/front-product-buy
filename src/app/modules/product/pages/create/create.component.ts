@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Product } from 'src/app/interfaces/product';
 import { ProductService } from 'src/app/shared/services/product.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create',
@@ -37,7 +38,13 @@ export class CreateComponent {
     console.log(this.product)
     this.service.createProduct(this.product).subscribe({
       next: (v) => {
-        alert('Producto creado');
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Producto creado',
+          showConfirmButton: false,
+          timer: 1500
+        })
         window.location.replace('http://localhost:4200/product/list');
       },
       error: (e) => console.log(e),
